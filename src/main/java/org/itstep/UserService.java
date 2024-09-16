@@ -13,7 +13,7 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public List<User> findAll(){
+    public List<User> findAll() {
         return userRepository.findAll();
     }
 
@@ -21,8 +21,12 @@ public class UserService {
         return (Page<User>) userRepository.findAll(pageable);
     }
 
-    public List<User> findByOrderByName(Sort sort){
+    public List<User> findByOrderByName(Sort sort) {
         //return userRepository.findByOrderByName();
         return userRepository.findAll(sort);
+    }
+
+    public Page<User> getAllComplains(int page, int size, String name) {
+        return null;
     }
 }
