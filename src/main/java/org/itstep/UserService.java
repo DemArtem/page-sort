@@ -2,6 +2,7 @@ package org.itstep;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -26,7 +27,9 @@ public class UserService {
         return userRepository.findAll(sort);
     }
 
-    public Page<User> getAllComplains(int page, int size, String name) {
-        return null;
+    public Page<User> getAllComplains(int page,int size, String name) {
+        Sort.Direction order = null;
+        Pageable pageable = PageRequest.of(page,size, Sort.by(order, name));
+        return userRepository.findAll(pageable);
     }
 }

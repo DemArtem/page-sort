@@ -47,13 +47,13 @@ public class UserController {
         return userService.findByOrderByName(Sort.by(direction, name));
     }
 
-    @GetMapping( value = "/users/page/sort", params = {"page", "size", "name", "order"} )
-    public Page<User> pageSortUsers(@RequestParam( "page" ) int page,
-                                    @RequestParam( "size" ) int size,
-                                    @RequestParam( "name" ) String name,
-                                    @RequestParam( "order" ) String order) {
+    @GetMapping(value = "/users/page/sort", params = {"page", "size", "name", "order"})
+    public Page<User> pageSortUsers(@RequestParam("page") int page,
+                                    @RequestParam("size") int size,
+                                    @RequestParam("name") String name,
+                                    @RequestParam("order") String order) {
         Sort.Direction direction = Sort.Direction.ASC;
-        if(order.equals("desc"))
+        if (order.equals("desc"))
             direction = Sort.Direction.DESC;
         return userService.getAllComplains(page,size, name);
     }
